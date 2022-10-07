@@ -696,7 +696,7 @@ zoomfitSayfaButton->setFixedSize(en, boy);
 zoomfitSayfaButton->setIconSize(QSize(en*0.8,boy*0.8));
 zoomfitSayfaButton->setFlat(true);
 zoomfitSayfaButton->hide();
-zoomfitSayfaButton->move(this->width()/4*3+boy*4,this->height()-boy);
+zoomfitSayfaButton->move(this->width()/4*3+boy*4,this->height()-boy-boy);
 
 connect(zoomfitSayfaButton, &QPushButton::clicked, [=]()
 {
@@ -709,7 +709,7 @@ zoompozitifSayfaButton->setFixedSize(en, boy);
 zoompozitifSayfaButton->setIconSize(QSize(en*0.8,boy*0.8));
 zoompozitifSayfaButton->setFlat(true);
 zoompozitifSayfaButton->hide();
-zoompozitifSayfaButton->move(this->width()/4*3+boy*2,this->height()-boy);
+zoompozitifSayfaButton->move(this->width()/4*3+boy*2,this->height()-boy-boy);
 
 connect(zoompozitifSayfaButton, &QPushButton::clicked, [=]()
 {
@@ -722,7 +722,7 @@ zoomnegatifSayfaButton->setFixedSize(en, boy);
 zoomnegatifSayfaButton->setIconSize(QSize(en*0.8,boy*0.8));
 zoomnegatifSayfaButton->setFlat(true);
 zoomnegatifSayfaButton->hide();
-zoomnegatifSayfaButton->move(this->width()/4*3+boy*3,this->height()-boy);
+zoomnegatifSayfaButton->move(this->width()/4*3+boy*3,this->height()-boy-boy);
 
 connect(zoomnegatifSayfaButton, &QPushButton::clicked, [=]()
 {
@@ -735,7 +735,7 @@ nextSayfaButton->setFixedSize(en, boy);
 nextSayfaButton->setIconSize(QSize(en*0.8,boy*0.8));
 nextSayfaButton->setFlat(true);
 nextSayfaButton->hide();
-nextSayfaButton->move(this->width()/4*3+boy,this->height()-boy);
+nextSayfaButton->move(this->width()/4*3+boy,this->height()-boy-boy);
 
 connect(nextSayfaButton, &QPushButton::clicked, [=]()
 {
@@ -748,7 +748,7 @@ backSayfaButton->setFixedSize(en, boy);
 backSayfaButton->setIconSize(QSize(en*0.8,boy*0.8));
 backSayfaButton->setFlat(true);
 backSayfaButton->hide();
-backSayfaButton->move(this->width()/4-boy-boy,this->height()-boy);
+backSayfaButton->move(this->width()/4-boy-boy,this->height()-boy-boy);
 connect(backSayfaButton, &QPushButton::clicked, [=]()
 {
 geriSayfaButtonClick();
@@ -762,7 +762,7 @@ delSayfaButton->setIconSize(QSize(en*0.8,boy*0.8));
 delSayfaButton->setFlat(true);
 ///delSayfaButton->hide();
 delSayfaButton->setEnabled(false);
-delSayfaButton->move(this->width()/4*3,this->height()-boy);
+delSayfaButton->move(this->width()/4*3,this->height()-boy-boy);
 connect(delSayfaButton, &QPushButton::clicked, [=]()
 {
     ekliSayfa--;
@@ -776,7 +776,7 @@ addSayfaButton->setFixedSize(en*c, boy);
 addSayfaButton->setIconSize(QSize(en*0.8,boy*0.8));
 addSayfaButton->setFlat(true);
 //addSayfaButton->hide();
-addSayfaButton->move(this->width()/4-boy,this->height()-boy);
+addSayfaButton->move(this->width()/4-boy,this->height()-boy-boy);
 connect(addSayfaButton, &QPushButton::clicked, [=]()
 {
 ekliSayfa++;
@@ -818,7 +818,7 @@ MoveLeft->setFixedSize(en*c, boy);
 MoveLeft->setIconSize(QSize(en*0.8,boy*0.8));
 MoveLeft->setFlat(true);
 //addSayfaButton->hide();
-MoveLeft->move(boy*1.5,this->height()-boy);
+MoveLeft->move(boy*1.5,this->height()-boy-boy);
 connect(MoveLeft, &QPushButton::clicked, [=]()
 {
     if(kutuLeft!=10)
@@ -842,7 +842,7 @@ MoveRight->setFixedSize(en*c, boy);
 MoveRight->setIconSize(QSize(en*0.8,boy*0.8));
 MoveRight->setFlat(true);
 //addSayfaButton->hide();
-MoveRight->move(this->width()-boy*1.5,this->height()-boy);
+MoveRight->move(this->width()-boy*1.5,this->height()-boy-boy);
 connect(MoveRight, &QPushButton::clicked, [=]()
 {
     if(kutuLeft!=this->width()-kutuWidth-10)

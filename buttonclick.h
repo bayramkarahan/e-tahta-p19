@@ -338,7 +338,7 @@ void MainWindow::ekranButtonClick(){
     else
     {
         //wust->show();
-        if(!wsolVisible) wsol->show();
+       ///// if(!wsolVisible) wsol->show();
 
 
 

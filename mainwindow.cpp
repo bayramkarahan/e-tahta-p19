@@ -145,7 +145,7 @@ MainWindow::MainWindow()
     pageListwg=new QWidget(this);
     pageListwg->resize(this->width()/2,boy);
    /// pageListwg->setPalette(*palette);
-    pageListwg->move(this->width()/4,this->height()-boy);
+    pageListwg->move(this->width()/4,this->height()-boy-boy);
     //pageListwg->setAutoFillBackground(true);
     pageListwg->setObjectName("pageListwg");
 
