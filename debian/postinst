@@ -1,0 +1,9 @@
+#!/bin/sh
+for item in $(ls /home)
+do
+#echo $item
+cp /usr/share/e-tahta/e-tahta.ini /home/$item/
+done
+
+exit 0
+#copy files to user home
