@@ -1293,7 +1293,7 @@ void MainWindow::infoButtonClick(){
                     "\n   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .          "
 
                    );
-    msgBox.setWindowTitle("E-Tahta 1.8.5");
+    msgBox.setWindowTitle("E-Tahta 1.8.7");
     QFont ff( "Arial", 10, QFont::Normal);
     msgBox.setFont(ff);
 
