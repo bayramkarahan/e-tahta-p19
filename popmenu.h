@@ -380,7 +380,7 @@ QMenu* MainWindow::colorMenu(QString colorType)
        menu->close();
 });
 
-   palette->setColor(QPalette::Button,QColor(0,0,0,0));
+   palette->setColor(QPalette::Button,QColor(255,120,0,255));
 
    QPushButton *color11Button= new QPushButton;
    color11Button->setFixedSize(e, b);
@@ -391,7 +391,67 @@ QMenu* MainWindow::colorMenu(QString colorType)
    color11Button->update();
 
    connect(color11Button, &QPushButton::clicked, [=]() {
-       QColor renk=QColor(0,0,0,0);
+       QColor renk=QColor(255,120,0,255);
+       if(colorType=="pencolor") setPenColor(renk);
+       if(colorType=="mySekilKalemColor")  mySekilKalemColor=renk;
+       if(colorType=="mySekilZeminColor")  mySekilZeminColor=renk;
+       if(colorType=="myZeminColor")  myZeminColor=renk;
+       if(colorType=="myGridColor")  myGridColor=renk;
+       menu->close();
+});
+
+
+   palette->setColor(QPalette::Button,QColor(102,0,153,255));
+
+   QPushButton *color12Button= new QPushButton;
+   color12Button->setFixedSize(e, b);
+   color12Button->setIconSize(QSize(e,b));
+   color12Button->setFlat(true);
+   color12Button->setAutoFillBackground(true);
+   color12Button->setPalette(*palette);
+   color12Button->update();
+
+   connect(color12Button, &QPushButton::clicked, [=]() {
+       QColor renk=QColor(102,0,153,255);
+       if(colorType=="pencolor") setPenColor(renk);
+       if(colorType=="mySekilKalemColor")  mySekilKalemColor=renk;
+       if(colorType=="mySekilZeminColor")  mySekilZeminColor=renk;
+       if(colorType=="myZeminColor")  myZeminColor=renk;
+       if(colorType=="myGridColor")  myGridColor=renk;
+       menu->close();
+});
+   palette->setColor(QPalette::Button,QColor(150,75,0,255));
+
+   QPushButton *color13Button= new QPushButton;
+   color13Button->setFixedSize(e, b);
+   color13Button->setIconSize(QSize(e,b));
+   color13Button->setFlat(true);
+   color13Button->setAutoFillBackground(true);
+   color13Button->setPalette(*palette);
+   color13Button->update();
+
+    connect(color13Button, &QPushButton::clicked, [=]() {
+       QColor renk=QColor(150,75,0,255);
+       if(colorType=="pencolor") setPenColor(renk);
+       if(colorType=="mySekilKalemColor")  mySekilKalemColor=renk;
+       if(colorType=="mySekilZeminColor")  mySekilZeminColor=renk;
+       if(colorType=="myZeminColor")  myZeminColor=renk;
+       if(colorType=="myGridColor")  myGridColor=renk;
+       menu->close();
+});
+
+    palette->setColor(QPalette::Button,QColor(150,170,255,255));
+
+   QPushButton *color14Button= new QPushButton;
+   color14Button->setFixedSize(e, b);
+   color14Button->setIconSize(QSize(e,b));
+   color14Button->setFlat(true);
+   color14Button->setAutoFillBackground(true);
+   color14Button->setPalette(*palette);
+   color14Button->update();
+
+   connect(color14Button, &QPushButton::clicked, [=]() {
+       QColor renk=QColor(150,170,255,255);
        if(colorType=="pencolor") setPenColor(renk);
        if(colorType=="mySekilKalemColor")  mySekilKalemColor=renk;
        if(colorType=="mySekilZeminColor")  mySekilZeminColor=renk;
@@ -415,6 +475,9 @@ QMenu* MainWindow::colorMenu(QString colorType)
     layout->addWidget(color9Button, 9,1,1,1,Qt::AlignHCenter);
     layout->addWidget(color10Button, 10,1,1,1,Qt::AlignHCenter);
     layout->addWidget(color11Button, 11,1,1,1,Qt::AlignHCenter);
+    layout->addWidget(color12Button, 12,1,1,1,Qt::AlignHCenter);
+    layout->addWidget(color13Button, 13,1,1,1,Qt::AlignHCenter);
+    layout->addWidget(color14Button, 14,1,1,1,Qt::AlignHCenter);
 
     auto wa = new QWidgetAction(this);
   //  wa->setIcon(QIcon(":/icon1"));
