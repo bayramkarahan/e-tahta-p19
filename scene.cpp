@@ -472,7 +472,7 @@ void Scene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
         QPen pen(myPenColor,myPenSize, myPenStyle, Qt::RoundCap ,Qt::RoundJoin);
         QPainterPath path;
         path.moveTo(points.at(0));
-//qDebug()<<"tek tıklama "<<points.size();
+qDebug()<<"tek tıklama "<<points.size();
         if(points.size()<3)
         {
            // qDebug()<<"scene realese----------------------------"<< sceneMoveState<<points.count();
@@ -488,7 +488,8 @@ void Scene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
             path.lineTo(points.at(0));
             path.lineTo(points.at(1));
             path.lineTo(points.at(2));
-            // QPointF(temppoint.x(),temppoint.y())<</qDebug()<<"tek tıklama ";
+            // QPointF(temppoint.x(),temppoint.y())<</
+            qDebug()<<"tek tıklama ";
         }
 
 
@@ -500,7 +501,7 @@ void Scene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
       int  kx=qFabs(sx-ex)/points.count();
       int  ky=qFabs(sy-ey)/points.count();
       //  qDebug()<<"path"<<points.count()<<"g:"<<kx<<"y:"<<ky;       // qDebug()<<qFabs(sx-ex);
-//qDebug()<<"point sayısı: "<<points.size();
+qDebug()<<"point sayısı: "<<points.size();
       if(sceneMoveState) //eğer move olayı olmussa
         {
 

@@ -372,6 +372,45 @@ private:
     int zamanlamastart=0;
      QWidget *wust;
       QWidget *wsol;
+        QVector<QPointF> wpoints;
+  double factorial(double n)
+        {
+            if (n == 0)
+               return 1;
+            return n * factorial(n - 1);
+        }
+  float distance(const QPointF& pt1, const QPointF& pt2)
+      {
+          float hd = (pt1.x() - pt2.x()) * (pt1.x() - pt2.x());
+          float vd = (pt1.y() - pt2.y()) * (pt1.y() - pt2.y());
+          return std::sqrt(hd + vd);
+      }
+
+      QPointF getLineStart(const QPointF& pt1, const QPointF& pt2)
+      {
+          QPointF pt;
+          float rat = 10.0 / distance(pt1, pt2);
+          if (rat > 0.5) {
+              rat = 0.5;
+          }
+          pt.setX((1.0 - rat) * pt1.x() + rat * pt2.x());
+          pt.setY((1.0 - rat) * pt1.y() + rat * pt2.y());
+          return pt;
+      }
+
+      QPointF getLineEnd(const QPointF& pt1, const QPointF& pt2)
+      {
+          QPointF pt;
+          float rat = 10.0 / distance(pt1, pt2);
+          if (rat > 0.5) {
+              rat = 0.5;
+          }
+          pt.setX(rat * pt1.x() + (1.0 - rat)*pt2.x());
+          pt.setY(rat * pt1.y() + (1.0 - rat)*pt2.y());
+          return pt;
+      }
+
+
     //butonlar ayarlanıyor
     void iconButton()
     {

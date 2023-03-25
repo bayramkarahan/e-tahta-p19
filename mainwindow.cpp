@@ -258,14 +258,14 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     {
         if ((event->buttons() & Qt::LeftButton) && drawingMain==true) {
 
-      //  qDebug()<<"main mouse  move";
+        qDebug()<<"main mouse  move";
 
-        drawLineTo(event->pos());
+       drawLineTo(event->pos());
         if (msx>event->pos().x()) msx=event->pos().x();
         if(msy>event->pos().y()) msy=event->pos().y();
         if(mex<event->pos().x()) mex=event->pos().x();
         if(mey<event->pos().y()) mey=event->pos().y();
-
+        wpoints<<event->pos();
         }
         update();
    }
@@ -274,7 +274,8 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-   // qDebug()<<"main press";
+
+    qDebug()<<"main press";
     if(penWriteStatus)
         {
             if ((event->buttons() & Qt::LeftButton)) {
@@ -286,7 +287,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             msy=event->pos().y();
             mex=event->pos().x();
             mey=event->pos().y();
-
+            wpoints<<event->pos();
             }
     }
 
@@ -315,9 +316,110 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     if(penWriteStatus)
     {
-  //  qDebug()<<"main mouse release";
-    if (event->button() == Qt::LeftButton && drawingMain&&penWriteStatus) {
+   qDebug()<<"main mouse release";
+   if(lastPoint==startPoint)
+   {
+       qDebug()<<"bastın çektin";
+       wpoints<<QPoint(wpoints.at(0).x()-1,wpoints.at(0).y()-1);
+       wpoints<<QPoint(wpoints.at(0).x()+1,wpoints.at(0).y()+1);
+       drawingMain=true;
+       penWriteStatus=true;
+      /* QPainterPath path;
+       path.moveTo(wpoints.at(0));
+       path.lineTo(wpoints.at(0).x()-1,wpoints.at(0).y()-1);
 
+       path.lineTo(wpoints.at(0).x()+1,wpoints.at(0).y()+1);
+
+       pen=QPen(myPenColor, myPenSize, Qt::SolidLine, Qt::RoundCap ,Qt::RoundJoin);
+
+      scene->addPath(path,pen);
+      path.clear();
+       wpoints.clear();*/
+   }
+    if (event->button() == Qt::LeftButton && drawingMain&&penWriteStatus) {
+        wpoints<<event->pos();
+
+        QPainterPath path;
+        path.moveTo(wpoints.at(0));
+       /* for(int i=0;i<wpoints.size()-2;i=i+1)
+        {
+        path.cubicTo(wpoints.at(i), wpoints.at(i+1), wpoints.at(i+2));
+        //path.CurveToElemenwpoints.at(i));
+          //  path.lineTo(wpoints.at(i));
+        }
+        scene->addPath(path,QPen(QColor(255,0,0,255), 5,Qt::SolidLine,Qt::RoundCap ,Qt::RoundJoin));
+        wpoints.clear();*/
+
+        /*************************************Denenecek*************************************************/
+         /*     int n=wpoints.length()-1;
+           for(double u = 0.0 ; u <= 1.0 ; u += 0.001)
+            {
+                //calculate x coordinate
+                double xu=0.0;
+                for (int i = n; i >= 0; i--) {
+                    xu+=wpoints[i].x()*((factorial(n)/(factorial(i)*factorial((n-i))))*pow(u,i)*pow((1-u),(n-i)));
+                  }
+
+               //calculate y coordinate
+               double yu=0.0;
+                for (int i = n; i >= 0; i--) {
+                    yu+=wpoints[i].y()*((factorial(n)/(factorial(i)*factorial((n-i))))*pow(u,i)*pow((1-u),(n-i)));
+                }
+               /// drawLineTo(QPoint((int)xu , (int)yu));
+                path.lineTo((int)xu , (int)yu);
+               // path.cubicTo(QPoint((int)xu , (int)yu), QPoint((int)xu , (int)yu), QPoint((int)xu , (int)yu));
+                ///img.setPixel((int)xu , (int)yu , qRgb(0,255, 0));
+             //   setPixmap(QPixmap::fromImage(res));//set image to label
+            }
+           pen=QPen(myPenColor, myPenSize, Qt::SolidLine, Qt::RoundCap ,Qt::RoundJoin);
+
+          scene->addPath(path,pen);
+             wpoints.clear();
+        /************************************************************************************/
+       // https://stackoverflow.com/questions/40764011/how-to-draw-a-smooth-curved-line-that-goes-through-several-points-in-qt
+        float factor=1;
+        QList<QPointF> points;
+           QPointF p;
+           for (int i = 0; i < wpoints.size() - 1; i++) {
+               p = QPointF(wpoints[i].x(), wpoints[i].y());
+
+               // Except for first and last points, check what the distance between two
+               // points is and if its less then min, don't add them to the list.
+               if (points.count() > 1 && (i <wpoints.size() - 2) && (distance(points.last(), p) < factor)) {
+                   continue;
+               }
+               points.append(p);
+           }
+
+           // Don't proceed if we only have 3 or less points.
+           if (points.count() < 3) {
+               return;
+           }
+
+           QPointF pt1;
+           QPointF pt2;
+           QPainterPath path1;//= new QPainterPath();
+           for (int i = 0; i < points.count() - 1; i++) {
+               pt1 = getLineStart(points[i], points[i + 1]);
+               if (i == 0) {
+                   path1.moveTo(pt1);
+               } else {
+                   path1.quadTo(points[i], pt1);
+               }
+               pt2 = getLineEnd(points[i], points[i + 1]);
+               path1.lineTo(pt2);
+           }
+
+          // delete mPath;
+          // path.clear();
+          // path = path1;
+        ///   prepareGeometryChange();
+           pen=QPen(myPenColor, myPenSize, Qt::SolidLine, Qt::RoundCap ,Qt::RoundJoin);
+
+         //scene->addPath(path1,pen);
+         /// path1.clear();
+             wpoints.clear();
+       /*************************************************************************************/
         drawLineTo(event->pos());
 
         lastPoint=event->pos();
@@ -336,16 +438,26 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
         mey=mey+(myPenSize/2)+2;
 
       //  qDebug()<<"sayfa sayısı:"<<sceneSayfaNumber;
-
-        if(sceneSayfaNumber>0)
+            startPoint=QPointF(msx,msy);
+    /*    if(sceneSayfaNumber>0)
             startPoint=QPointF(msx,msy);
         else
-
             startPoint=QPointF(msx-1,msy-1);
+*/
 
+         qDebug()<<"resim oluşturulsu";
+         QPixmap pix1(qFabs(msx-mex), qFabs(msy-mey));
+         pix1.fill(Qt::transparent);
+         QPainter painter(&pix1);
+         painter.setRenderHint(QPainter::Antialiasing, true);
+         painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        painter.setWindow(QRect(msx, msy,qFabs(msx-mex), qFabs(msy-mey)));
+         painter.setPen(pen);
+         painter.strokePath(path1,pen);
 
         VERectangle*  itemToRectDraw = new VERectangle(scene);
         itemToRectDraw->sekilTur(DiagramItem::DiagramType::Kalem);
+        //itemToRectDraw->sekilTur(DiagramItem::DiagramType::Resim);
         //itemToRectDraw->setPen(QPen(mySekilKalemColor, mySekilPenSize, mySekilPenStyle));
         //itemToRectDraw->setBrush(mySekilZeminColor);
         ///QPixmap temp=QPixmap::fromImage(copyImage(img,QRect(QPoint(msx,msy),QPoint(mex,mey))));
@@ -355,8 +467,9 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 
         itemToRectDraw->setPos(startPoint);
-        itemToRectDraw->setImage(temp);
-        scene->addItem(itemToRectDraw);
+       /// itemToRectDraw->setImage(temp);
+        itemToRectDraw->setImage(pix1);
+      scene->addItem(itemToRectDraw);
         //qDebug()<<"eklendi**********************";
         /***************************************/
 
@@ -441,7 +554,7 @@ void MainWindow::drawLineTo(const QPoint &endPoint)
    // painter.setRenderHint(QPainter::Qt4CompatiblePainting);
     // painter.setRenderHint(QPainter::NonCosmeticDefaultPen);
     painter.setRenderHint(QPainter::SmoothPixmapTransform);
-
+//qDebug()<<"deneme";
 
  painter.drawLine(lastPoint, endPoint);
 
