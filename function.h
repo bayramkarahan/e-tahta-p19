@@ -382,10 +382,11 @@ void MainWindow::setSekilType(const DiagramItem::DiagramType &typ){
   }
 void MainWindow::setPenSize(int size)
 {
-    int t = size * 2 - 1;
-    this->myPenSize = t;
+  //  int t = size * 2 - 1;
+    this->myPenSize = size;
+ //   this->myPenSize = t;
     kalemSizePopLabel->setText("Kalem Boyutu: "+QString::number(myPenSize)+"\t\t");
-    scene->setPenSize(myPenSize);
+    scene->setPenSize(this->myPenSize);
     kalemButtonClick();
 }
 
