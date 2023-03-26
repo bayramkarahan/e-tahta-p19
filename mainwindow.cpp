@@ -257,12 +257,14 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     if(penWriteStatus)
     {
         if ((event->buttons() & Qt::LeftButton) && drawingMain==true) {
-        qDebug()<<"main mouse  move"<<event->pos();
+
         if (msx>event->pos().x()) msx=event->pos().x();
         if(msy>event->pos().y()) msy=event->pos().y();
         if(mex<event->pos().x()) mex=event->pos().x();
         if(mey<event->pos().y()) mey=event->pos().y();
         float factor=10;
+        factor=myEraseSize;
+        qDebug()<<"main mouse  move"<<event->pos()<<myEraseSize;
         bool drm=(wpoints.count() > 1  && (distance(wpoints.last(), event->pos()) < factor));
        if (!drm)
         {
