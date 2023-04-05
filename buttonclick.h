@@ -1274,7 +1274,7 @@ void MainWindow::infoButtonClick(){
                    "\n*****************************************************************************"
                    "\n   Copyright (C) 2023 by Bayram KARAHAN                                    "
                    "\n\n\tkod.pardus.org.tr/karahan/e-tahta"
-                   "\n\tgithub.com/bayramkarahan/E-Tahta"
+                   "\n\tgithub.com/bayramkarahan/e-tahta"
                    "\n\tbayramkarahan.blogspot.com"
                    "\n\tbayramk@gmail.com  "
                     "\n\n   This program is free software; you can redistribute it and/or modify    "
@@ -1293,7 +1293,7 @@ void MainWindow::infoButtonClick(){
                     "\n   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .          "
 
                    );
-    msgBox.setWindowTitle("E-Tahta 1.8.8");
+    msgBox.setWindowTitle("e-tahta 1.8.8");
     QFont ff( "Arial", 10, QFont::Normal);
     msgBox.setFont(ff);
 

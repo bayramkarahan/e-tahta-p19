@@ -4,19 +4,12 @@ CONFIG += c++11
 
 
 
-INCLUDEPATH += \
-                /usr/include/opencv4
-                /usr/include
-LIBS += -L/usr/lib -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_imgcodecs
-
-
-#INCLUDEPATH  += /usr/include/poppler/qt5
-#LIBS         += -L/usr/lib/-lpoppler-qt5
-#LIBS += -L/usr/lib/x86_64-linux-gnu/-lpoppler-qt5
-#LIBS += -L/usr/local/lib/ -lpoppler-qt5
-#https://askubuntu.com/questions/1240998/how-to-install-poppler-0-73-on-ubuntu-20-04-any-change-since-18-04
-INCLUDEPATH  += /usr/include/poppler/qt5
-LIBS         += -L/usr/lib/ -lpoppler-qt5
+LIBS += -L/usr/local/lib -lpoppler-qt5
+INCLUDEPATH += ./usr/local/include
+LIBS += -L/usr/lib -lopencv_core
+LIBS += -L/usr/lib -lopencv_imgproc
+LIBS += -L/usr/lib -lopencv_highgui
+LIBS += -L/usr/lib -lopencv_imgcodecs #kde kapatılacak
 
 
 QMAKE_CXXFLAGS = -std=c++11
@@ -60,7 +53,7 @@ icon.files = icons/e-tahta.png
 icon.path = /usr/share/e-tahta/
 
 config_file.files = e-tahta.ini
-config_file.path = /usr/share/e-tahta/e-tahta.ini
+config_file.path = /usr/share/e-tahta/
 
 auto_start.files = e-tahta-autostart.desktop
 auto_start.path = /etc/xdg/autostart/

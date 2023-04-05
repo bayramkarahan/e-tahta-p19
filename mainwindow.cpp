@@ -442,26 +442,28 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
         drawLineTo(event->pos());
         wpoints.clear();
         drawingMain = false;
-
+        ///qDebug()<<"ilk hali"<<msx<<msy<<mex<<mey<<myPenSize;
        if (msx>event->pos().x()) msx=event->pos().x();
         if(msy>event->pos().y()) msy=event->pos().y();
         if(mex<event->pos().x()) mex=event->pos().x();
         if(mey<event->pos().y()) mey=event->pos().y();
         if(mex<msx){int xtmp=msx;msx=mex;mex=xtmp;}
         if(mey<msy){int ytmp=msy;msy=mey;mey=ytmp;}
+        //startPoint=QPointF(msx-(myPenSize/2),msy-(myPenSize/2));
+        //startPoint=QPointF(msx-(myPenSize/2)-0.5,msy-(myPenSize/2)-0.5);
+        msx=msx-(myPenSize/2);
+        msy=msy-(myPenSize/2);
+        mex=mex+(myPenSize/2);
+        mey=mey+(myPenSize/2);
 
-        msx=msx-(myPenSize/2)-2;
-        msy=msy-(myPenSize/2)-2;
-        mex=mex+(myPenSize/2)+2;
-        mey=mey+(myPenSize/2)+2;
-
+        startPoint=QPointF(msx,msy);
       //  qDebug()<<"sayfa sayısı:"<<sceneSayfaNumber;
       //      startPoint=QPointF(msx,msy);
     /*    if(sceneSayfaNumber>0)
             startPoint=QPointF(msx,msy);
        else
-    */         startPoint=QPointF(msx-0.5,msy-0.5);
-
+    */
+           /// qDebug()<<"son hali"<<msx<<msy<<mex<<mey<<startPoint;
 
         /*qDebug()<<"resim oluşturulsu"<<myPenSize;
          QPixmap pix1(qFabs(msx-mex), qFabs(msy-mey));
