@@ -191,6 +191,12 @@ MainWindow::MainWindow()
  drawingMain = false;
  img.fill(qRgba(0, 0, 0, 0));
 
+ekliSayfa++;
+ ekleSayfaButtonClick(sceneSayfaActiveNumber,false,-1);
+ ekliSayfa--;
+ silSayfaButtonClick();
+ ekranButtonClick();///önemli
+
 
 }
 void MainWindow::resizeSlot()
